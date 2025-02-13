@@ -6,8 +6,8 @@ export interface IData {
 }
 
 export interface IUseFetch {
-  data: object[];
+  data: IData[];
   isLoading: boolean;
   error: boolean;
-  refetch: () => void;
+  refetch: ({ params }: { params: object }) => Promise<void>;
 }

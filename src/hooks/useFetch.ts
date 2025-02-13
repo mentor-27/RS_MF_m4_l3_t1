@@ -1,8 +1,8 @@
 import { useEffect, useState, useTransition } from 'react';
 
-import { IData } from '../types';
+import { IData, IUseFetch } from '../types';
 
-export const useFetch = (url: string) => {
+export const useFetch = (url: string): IUseFetch => {
   const [data, setData] = useState<IData[]>([]);
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<boolean>(false);
