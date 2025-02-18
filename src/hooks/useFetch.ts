@@ -7,17 +7,17 @@ export const useFetch = (url: string): IUseFetch => {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<boolean>(false);
 
-  const newUrl = new URL(url);
-
-  async function fetchData(params?: string) {
+  const fetchData = async (params?: string) => {
+    const newUrl = new URL(url);
     try {
       const res = await fetch(`${newUrl.href}/?${params || ''}`);
       const data = await res.json();
       setData(data);
+      setError(false);
     } catch (error) {
       setError(true);
     }
-  }
+  };
 
   async function refetch({ params }: { params: object }) {
     const mappedParams = Object.entries(params)
